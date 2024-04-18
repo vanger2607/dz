@@ -10,9 +10,14 @@ const PORT = 3000;
 const app = express();
 
 // Запускаем
-app.use(express.static(path.join(__dirname, "public")));
-app.use(bodyParser.json(), mainRouter, gamesRouter);
-app.use(cors);
+app.use(
+  cors,
+  bodyParser.json(),
+  express.static(path.join(__dirname, "public")),
+  mainRouter,
+  gamesRouter
+);
+
 app.listen(PORT, () => {
   console.log(`Server is running at PORT http://localhost:${PORT}`);
 });
