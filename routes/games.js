@@ -1,6 +1,6 @@
 const gamesRouter = require("express").Router(); // Создали роутер
 const {sendAllGames, deleteGame, addGameController} = require("../controllers")
-const { getAllGames } = require("../middlewares")
+const  getAllGames = require("../middlewares")
 
 
 gamesRouter.use(getAllGames)
