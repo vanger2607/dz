@@ -46,4 +46,29 @@ const updateGamesArray = async (req, res, next) => {
   next();
 };
 
-module.exports = { getAllGames, checkIsTitleInArray, updateGamesArray };
+const updateGamesFile = async (req, res, next) => {
+    await writeData("./data/games.json", req.games);
+    next();
+  };
+
+  const findGameById = (req, res, next) => {
+    const id = Number(req.params.id);
+    req.game = req.games.find(item => item.id === id);
+    next();
+  };
+  
+  const deleteGame = (req, res, next) => {
+    const id = req.game.id;
+    const index = req.games.findIndex(item => item.id === id);
+    req.games.splice(index, 1);
+    next();
+  };
+  
+  module.exports = {
+    getAllGames,
+    checkIsTitleInArray,
+    updateGamesArray,
+    updateGamesFile,
+    findGameById,
+    deleteGame
+  }; 
