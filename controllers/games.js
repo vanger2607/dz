@@ -1,7 +1,7 @@
 const { readData, writeData } = require("../utils/data"); // Чтение и запись данных в JSON-файл
 
 // Получим игры из JSON-файла и отправим в ответ на запрос
-const getAllGames = async (req, res) => {
+const sendAllGames = async (req, res) => {
   const games = await readData("./data/games.json");
   if (!games) {
     res.status(400);
@@ -98,7 +98,7 @@ const addGameController = async (req, res) => {
 } 
 
 module.exports = {
-    getAllGames,
+    sendAllGames,
     deleteGame,
     addGameController,
 }
