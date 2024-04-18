@@ -1,11 +1,33 @@
-const gamesRouter = require("express").Router(); // Создали роутер
-const {sendAllGames, deleteGame, addGameController} = require("../controllers")
-const  { getAllGames } = require("../middlewares")
+const gamesRouter = require("express").Router();
 
+const {
+  getAllGames,
+  checkIsTitleInArray,
+  updateGamesArray,
+  updateGamesFile,
+  findGameById,
+  deleteGame,
+} = require("../middlewares/games");
+const { sendAllGames, sendUpdatedGames } = require("../controllers/games");
 
-gamesRouter.use(getAllGames)
-gamesRouter.get("/games", sendAllGames)
-gamesRouter.delete("/games/:id", deleteGame);
-gamesRouter.post("/games", addGameController) 
+gamesRouter.get("/games", getAllGames, sendAllGames);
 
-module.exports = gamesRouter; 
+gamesRouter.post(
+  "/games",
+  getAllGames,
+  checkIsTitleInArray,
+  updateGamesArray,
+  updateGamesFile,
+  sendUpdatedGames
+);
+
+gamesRouter.delete(
+  "/games/:id",
+  getAllGames,
+  findGameById,
+  deleteGame,
+  updateGamesFile,
+  sendUpdatedGames
+);
+
+module.exports = gamesRouter;
