@@ -1,3 +1,4 @@
-const getAllGames = require("./games")
+const getAllGames = require("./games");
+const cors = require("./cors");
 
-module.exports = getAllGames;
+module.exports = { getAllGames, cors };
