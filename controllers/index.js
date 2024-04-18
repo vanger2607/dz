@@ -1,7 +1,7 @@
-const { getAllGames, deleteGame, addGameController } = require("./games");
+const { sendAllGames, deleteGame, addGameController } = require("./games");
 
 module.exports = {
-  getAllGames,
+  sendAllGames,
   deleteGame,
   addGameController,
 };
