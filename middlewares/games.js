@@ -1,4 +1,4 @@
-const { readData } = require("../utils/data");
+const { readData, writeData } = require("../utils/data");
 
 const getAllGames = async (req, res, next) => {
   // Читаем список игр из файла
